@@ -58,16 +58,16 @@ def handle_message(event):
 
     myquery = { "tfidf": { "$in": x } }
 
-    article = []
     text = ""
 
     n = 0
     for match in mycol.find(myquery) :
         print(match["title"])
-        article.append(match)
         text = text + '\n'+ str(n) + ' : ' + match["title"] + '\n' + match["link"]
         n += 1
 
+    if len(text) == 0 :
+        text = "什麼都找不到... QQ"
 
     line_bot_api.reply_message(
     event.reply_token,
