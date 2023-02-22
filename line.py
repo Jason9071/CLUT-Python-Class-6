@@ -66,12 +66,12 @@ def handle_message(event):
         print(match["title"])
         article.append(match)
         text = text + '\n'+ str(n) + ' : ' + match["title"] + '\n' + match["link"]
-        #n += 1
+        n += 1
 
 
     line_bot_api.reply_message(
     event.reply_token,
-    TextSendMessage(text=text),
+    TextMessage(text=text),
     )
 
 if __name__ == "__main__":
